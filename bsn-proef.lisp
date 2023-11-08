@@ -23,4 +23,4 @@ where the last digit is dropped."
 	  (if (is-bsn-valid i)
 		  (if (is-bsn-valid (truncate i 10))
 			  (incf counter))))
-	(format nil "~d pairs (~1f%)" counter (* 100 (/ counter 899999999)))))
+	(format nil "~d pairs (~,3f%)" counter (* 100 (/ counter 899999999)))))
