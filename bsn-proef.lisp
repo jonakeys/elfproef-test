@@ -18,15 +18,12 @@
 (defun find-valid-pairs ()
   "Find a valid bsn pair. I.e. a valid nine number and eight number
 where the last digit is dropped."
-  (let ((counter 0) (sum-valid 0) (total-iterations 0))
-	(do ((i 100000000 (incf i)))
+  (let ((counter 0) (sum-valid 0))
+	(do ((i 10000000 (incf i)))
 		((= i 1000000000))
 	  (when (is-bsn-valid i)
 		(incf sum-valid)
 		(if (is-bsn-valid (truncate i 10))
-			(incf counter)))
-	  (incf total-iterations))
+			(incf counter))))
 	(format t "~d pairs (~,3f% of ~d)~%"
-			counter
-			(* 100 (/ counter sum-valid))
-			sum-valid)))
+			counter (* 100 (/ counter sum-valid)) sum-valid)))
